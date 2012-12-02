@@ -1,7 +1,7 @@
 idea.rb
 =======
 
-idea.rb is an IntelliJ plugin which exposes the IntelliJ Plugin API (OpenAPI) into user space i.e. from within your project you can define customizations to the IDE.
+idea.rb is an IntelliJ plugin which exposes the IntelliJ Plugin API (OpenAPI) into user space so you can define customizations to the IDE from within your project.
 
 Usage
 =====
