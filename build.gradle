@@ -23,6 +23,8 @@ task(distribution, type: Zip, dependsOn: 'assemble') {
 
 idea {
   module {
+    scopes.COMPILE.minus += configurations.providedCompile
+
     iml {
       withXml {
         def root = it.asNode()
