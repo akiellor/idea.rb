@@ -1,0 +1,59 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+configurations {
+  compile.extendsFrom providedCompile
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'org.jruby:jruby-complete:1.7.0'
+  compile 'com.google.guava:guava:13.0.1'
+  providedCompile fileTree(dir: project.getProperty("idea.libraries"))
+}
+
+task(distribution, type: Zip, dependsOn: 'assemble') {
+  from jar.archivePath
+  from configurations.runtime - configurations.providedCompile
+  into 'idea.rb/lib'
+}
+
+idea {
+  module {
+    iml {
+      withXml {
+        def root = it.asNode()
+        root.attributes().putAt('type', 'PLUGIN_MODULE')
+        root.append(new NodeBuilder().component('name': "DevKit.ModuleBuildProperties", url: "file://\$MODULE_DIR\$/src/main/resources/META-INF/plugin.xml"))
+      }
+    }
+  }
+
+  project {
+    jdkName = 'IDEA IU-117.798'
+
+    ipr {
+      withXml {
+        def project = it.asNode()
+
+        // Automatically set up Git support
+        project.append(node().component(name: 'VcsDirectoryMappings') {
+          mapping(directory: '$PROJECT_DIR$', vcs: 'Git')
+        })
+
+        // Disable annoying popup asking to configure frameworks
+        project.append(node().component(name: 'FrameworkDetectionExcludesConfiguration') {
+          type(id: 'JRUBY')
+        })
+      }
+    }
+  }
+}
+
+def node() {
+  new NodeBuilder()
+}
+
