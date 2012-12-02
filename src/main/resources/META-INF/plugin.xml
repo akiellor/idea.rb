@@ -1,8 +1,8 @@
 <idea-plugin version="2">
-  <name>Plugin name here</name>
-  <description>short description of the plugin</description>
-  <version>1.0</version>
-  <vendor>YourCompany</vendor>
+  <name>idea.rb</name>
+  <description>Run plugins implemented in Ruby from within your Project</description>
+  <version>0.1</version>
+  <vendor>idea.rb</vendor>
 
   <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
   <idea-version since-build="107.105"/>
