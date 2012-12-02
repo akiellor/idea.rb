@@ -6,7 +6,7 @@ idea.rb is an IntelliJ plugin which exposes the IntelliJ Plugin API (OpenAPI) in
 Usage
 =====
 
-1) Package the plugin with:
+1) Package the plugin with (this will output the plugin to build/distributions/idea.rb.zip):
 
 ```bash
 $ gradle -Pidea.libraries="<idea.home>/lib" distribution
