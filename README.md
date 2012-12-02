@@ -6,14 +6,15 @@ idea.rb is an IntelliJ plugin which exposes the IntelliJ Plugin API (OpenAPI) in
 Usage
 =====
 
-1. Package the plugin with:
-```
+1) Package the plugin with:
+
+```bash
 $ gradle -Pidea.libraries="<idea.home>/lib" distribution
 ```
 
-2. Install the plugin from IntelliJ. "Plugins -> "Install From Disk"
+2) Install the plugin from IntelliJ. "Plugins -> "Install From Disk"
 
-3. Create a idea.rb file in the top level directory in you project with the following content:
+3) Create a idea.rb file in the top level directory in you project with the following content:
 
 ```ruby
 require 'java'
@@ -49,4 +50,4 @@ end
 proc { |project| MyAwesomePlugin.new(project) }
 ```
 
-4. Reload your project.
+4) Reload your project.
